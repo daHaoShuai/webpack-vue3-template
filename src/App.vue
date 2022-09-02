@@ -1,8 +1,15 @@
 <template>
-    <div>count is {{ count }}</div>
-    <button @click="count++">add</button>
+    <div>
+        {{ name }}
+    </div>
+    <div>
+        {{ nickName }}
+    </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-const count = ref(0)
+import { toRefs } from 'vue'
+import { useUserStore } from './store/modules/user'
+
+const userStore = useUserStore()
+const { name, nickName } = toRefs(userStore.userInfo)
 </script>
